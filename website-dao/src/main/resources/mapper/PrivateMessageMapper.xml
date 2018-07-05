@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="dao.PrivateMessageMapper">
-    <resultMap id="BaseResultMap" type="beans.PrivateMessage">
+<mapper namespace="com.website.dao.PrivateMessageMapper">
+    <resultMap id="BaseResultMap" type="com.website.pojo.PrivateMessage">
         <id column="id" jdbcType="BIGINT" property="id"/>
         <result column="sender_id" jdbcType="BIGINT" property="senderId"/>
         <result column="receiver_id" jdbcType="BIGINT" property="receiverId"/>
@@ -75,7 +75,7 @@
     id, sender_id, receiver_id, message_type, message_content, gmt_create, gmt_modified, 
     status
   </sql>
-    <select id="selectByExample" parameterType="beans.PrivateMessageExample" resultMap="BaseResultMap">
+    <select id="selectByExample" parameterType="com.website.pojo.PrivateMessageExample" resultMap="BaseResultMap">
         select
         <if test="distinct">
             distinct
@@ -99,13 +99,13 @@
     delete from private_message
     where id = #{id,jdbcType=BIGINT}
   </delete>
-    <delete id="deleteByExample" parameterType="beans.PrivateMessageExample">
+    <delete id="deleteByExample" parameterType="com.website.pojo.PrivateMessageExample">
         delete from private_message
         <if test="_parameter != null">
             <include refid="Example_Where_Clause"/>
         </if>
     </delete>
-    <insert id="insert" parameterType="beans.PrivateMessage">
+    <insert id="insert" parameterType="com.website.pojo.PrivateMessage">
     insert into private_message (id, sender_id, receiver_id, 
       message_type, message_content, gmt_create, 
       gmt_modified, status)
@@ -113,7 +113,7 @@
       #{messageType,jdbcType=TINYINT}, #{messageContent,jdbcType=VARCHAR}, #{gmtCreate,jdbcType=TIMESTAMP}, 
       #{gmtModified,jdbcType=TIMESTAMP}, #{status,jdbcType=TINYINT})
   </insert>
-    <insert id="insertSelective" parameterType="beans.PrivateMessage">
+    <insert id="insertSelective" parameterType="com.website.pojo.PrivateMessage">
         insert into private_message
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="id != null">
@@ -168,7 +168,7 @@
             </if>
         </trim>
     </insert>
-    <select id="countByExample" parameterType="beans.PrivateMessageExample" resultType="java.lang.Long">
+    <select id="countByExample" parameterType="com.website.pojo.PrivateMessageExample" resultType="java.lang.Long">
         select count(*) from private_message
         <if test="_parameter != null">
             <include refid="Example_Where_Clause"/>
@@ -220,7 +220,7 @@
             <include refid="Update_By_Example_Where_Clause"/>
         </if>
     </update>
-    <update id="updateByPrimaryKeySelective" parameterType="beans.PrivateMessage">
+    <update id="updateByPrimaryKeySelective" parameterType="com.website.pojo.PrivateMessage">
         update private_message
         <set>
             <if test="senderId != null">
@@ -247,7 +247,7 @@
         </set>
         where id = #{id,jdbcType=BIGINT}
     </update>
-    <update id="updateByPrimaryKey" parameterType="beans.PrivateMessage">
+    <update id="updateByPrimaryKey" parameterType="com.website.pojo.PrivateMessage">
     update private_message
     set sender_id = #{senderId,jdbcType=BIGINT},
       receiver_id = #{receiverId,jdbcType=BIGINT},

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="dao.UserRelationMapper">
-    <resultMap id="BaseResultMap" type="beans.UserRelation">
+<mapper namespace="com.website.dao.UserRelationMapper">
+    <resultMap id="BaseResultMap" type="com.website.pojo.UserRelation">
         <id column="id" jdbcType="BIGINT" property="id"/>
         <result column="follow_id" jdbcType="BIGINT" property="followId"/>
         <result column="relation" jdbcType="TINYINT" property="relation"/>
@@ -71,7 +71,7 @@
     <sql id="Base_Column_List">
     id, follow_id, relation, gmt_create, gmt_modified
   </sql>
-    <select id="selectByExample" parameterType="beans.UserRelationExample" resultMap="BaseResultMap">
+    <select id="selectByExample" parameterType="com.website.pojo.UserRelationExample" resultMap="BaseResultMap">
         select
         <if test="distinct">
             distinct
@@ -95,19 +95,19 @@
     delete from user_relation
     where id = #{id,jdbcType=BIGINT}
   </delete>
-    <delete id="deleteByExample" parameterType="beans.UserRelationExample">
+    <delete id="deleteByExample" parameterType="com.website.pojo.UserRelationExample">
         delete from user_relation
         <if test="_parameter != null">
             <include refid="Example_Where_Clause"/>
         </if>
     </delete>
-    <insert id="insert" parameterType="beans.UserRelation">
+    <insert id="insert" parameterType="com.website.pojo.UserRelation">
     insert into user_relation (id, follow_id, relation, 
       gmt_create, gmt_modified)
     values (#{id,jdbcType=BIGINT}, #{followId,jdbcType=BIGINT}, #{relation,jdbcType=TINYINT}, 
       #{gmtCreate,jdbcType=TIMESTAMP}, #{gmtModified,jdbcType=TIMESTAMP})
   </insert>
-    <insert id="insertSelective" parameterType="beans.UserRelation">
+    <insert id="insertSelective" parameterType="com.website.pojo.UserRelation">
         insert into user_relation
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="id != null">
@@ -144,7 +144,7 @@
             </if>
         </trim>
     </insert>
-    <select id="countByExample" parameterType="beans.UserRelationExample" resultType="java.lang.Long">
+    <select id="countByExample" parameterType="com.website.pojo.UserRelationExample" resultType="java.lang.Long">
         select count(*) from user_relation
         <if test="_parameter != null">
             <include refid="Example_Where_Clause"/>
@@ -184,7 +184,7 @@
             <include refid="Update_By_Example_Where_Clause"/>
         </if>
     </update>
-    <update id="updateByPrimaryKeySelective" parameterType="beans.UserRelation">
+    <update id="updateByPrimaryKeySelective" parameterType="com.website.pojo.UserRelation">
         update user_relation
         <set>
             <if test="followId != null">
@@ -202,7 +202,7 @@
         </set>
         where id = #{id,jdbcType=BIGINT}
     </update>
-    <update id="updateByPrimaryKey" parameterType="beans.UserRelation">
+    <update id="updateByPrimaryKey" parameterType="com.website.pojo.UserRelation">
     update user_relation
     set follow_id = #{followId,jdbcType=BIGINT},
       relation = #{relation,jdbcType=TINYINT},

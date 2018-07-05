@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="dao.FavoriteWorksMapper">
-    <resultMap id="BaseResultMap" type="beans.FavoriteWorks">
+<mapper namespace="com.website.dao.FavoriteWorksMapper">
+    <resultMap id="BaseResultMap" type="com.website.pojo.FavoriteWorks">
         <id column="id" jdbcType="BIGINT" property="id"/>
         <result column="works_id" jdbcType="BIGINT" property="worksId"/>
         <result column="user_id" jdbcType="BIGINT" property="userId"/>
@@ -72,7 +72,7 @@
     <sql id="Base_Column_List">
     id, works_id, user_id, is_deleted, gmt_create, gmt_modified
   </sql>
-    <select id="selectByExample" parameterType="beans.FavoriteWorksExample" resultMap="BaseResultMap">
+    <select id="selectByExample" parameterType="com.website.pojo.FavoriteWorksExample" resultMap="BaseResultMap">
         select
         <if test="distinct">
             distinct
@@ -96,13 +96,13 @@
     delete from favorite_works
     where id = #{id,jdbcType=BIGINT}
   </delete>
-    <delete id="deleteByExample" parameterType="beans.FavoriteWorksExample">
+    <delete id="deleteByExample" parameterType="com.website.pojo.FavoriteWorksExample">
         delete from favorite_works
         <if test="_parameter != null">
             <include refid="Example_Where_Clause"/>
         </if>
     </delete>
-    <insert id="insert" parameterType="beans.FavoriteWorks">
+    <insert id="insert" parameterType="com.website.pojo.FavoriteWorks">
     insert into favorite_works (id, works_id, user_id, 
       is_deleted, gmt_create, gmt_modified
       )
@@ -110,7 +110,7 @@
       #{isDeleted,jdbcType=TINYINT}, #{gmtCreate,jdbcType=TIMESTAMP}, #{gmtModified,jdbcType=TIMESTAMP}
       )
   </insert>
-    <insert id="insertSelective" parameterType="beans.FavoriteWorks">
+    <insert id="insertSelective" parameterType="com.website.pojo.FavoriteWorks">
         insert into favorite_works
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="id != null">
@@ -153,7 +153,7 @@
             </if>
         </trim>
     </insert>
-    <select id="countByExample" parameterType="beans.FavoriteWorksExample" resultType="java.lang.Long">
+    <select id="countByExample" parameterType="com.website.pojo.FavoriteWorksExample" resultType="java.lang.Long">
         select count(*) from favorite_works
         <if test="_parameter != null">
             <include refid="Example_Where_Clause"/>
@@ -197,7 +197,7 @@
             <include refid="Update_By_Example_Where_Clause"/>
         </if>
     </update>
-    <update id="updateByPrimaryKeySelective" parameterType="beans.FavoriteWorks">
+    <update id="updateByPrimaryKeySelective" parameterType="com.website.pojo.FavoriteWorks">
         update favorite_works
         <set>
             <if test="worksId != null">
@@ -218,7 +218,7 @@
         </set>
         where id = #{id,jdbcType=BIGINT}
     </update>
-    <update id="updateByPrimaryKey" parameterType="beans.FavoriteWorks">
+    <update id="updateByPrimaryKey" parameterType="com.website.pojo.FavoriteWorks">
     update favorite_works
     set works_id = #{worksId,jdbcType=BIGINT},
       user_id = #{userId,jdbcType=BIGINT},

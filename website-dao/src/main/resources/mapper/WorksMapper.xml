@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="dao.WorksMapper">
-    <resultMap id="BaseResultMap" type="beans.Works">
+<mapper namespace="com.website.dao.WorksMapper">
+    <resultMap id="BaseResultMap" type="com.website.pojo.Works">
         <id column="id" jdbcType="BIGINT" property="id"/>
         <result column="student_id" jdbcType="BIGINT" property="studentId"/>
         <result column="works_name" jdbcType="VARCHAR" property="worksName"/>
@@ -74,7 +74,7 @@
     <sql id="Base_Column_List">
     id, student_id, works_name, works_describe, works_status, price, gmt_create, gmt_modified
   </sql>
-    <select id="selectByExample" parameterType="beans.WorksExample" resultMap="BaseResultMap">
+    <select id="selectByExample" parameterType="com.website.pojo.WorksExample" resultMap="BaseResultMap">
         select
         <if test="distinct">
             distinct
@@ -98,13 +98,13 @@
     delete from works
     where id = #{id,jdbcType=BIGINT}
   </delete>
-    <delete id="deleteByExample" parameterType="beans.WorksExample">
+    <delete id="deleteByExample" parameterType="com.website.pojo.WorksExample">
         delete from works
         <if test="_parameter != null">
             <include refid="Example_Where_Clause"/>
         </if>
     </delete>
-    <insert id="insert" parameterType="beans.Works">
+    <insert id="insert" parameterType="com.website.pojo.Works">
     insert into works (id, student_id, works_name, 
       works_describe, works_status, price, 
       gmt_create, gmt_modified)
@@ -112,7 +112,7 @@
       #{worksDescribe,jdbcType=VARCHAR}, #{worksStatus,jdbcType=TINYINT}, #{price,jdbcType=DECIMAL}, 
       #{gmtCreate,jdbcType=TIMESTAMP}, #{gmtModified,jdbcType=TIMESTAMP})
   </insert>
-    <insert id="insertSelective" parameterType="beans.Works">
+    <insert id="insertSelective" parameterType="com.website.pojo.Works">
         insert into works
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="id != null">
@@ -167,7 +167,7 @@
             </if>
         </trim>
     </insert>
-    <select id="countByExample" parameterType="beans.WorksExample" resultType="java.lang.Long">
+    <select id="countByExample" parameterType="com.website.pojo.WorksExample" resultType="java.lang.Long">
         select count(*) from works
         <if test="_parameter != null">
             <include refid="Example_Where_Clause"/>
@@ -219,7 +219,7 @@
             <include refid="Update_By_Example_Where_Clause"/>
         </if>
     </update>
-    <update id="updateByPrimaryKeySelective" parameterType="beans.Works">
+    <update id="updateByPrimaryKeySelective" parameterType="com.website.pojo.Works">
         update works
         <set>
             <if test="studentId != null">
@@ -246,7 +246,7 @@
         </set>
         where id = #{id,jdbcType=BIGINT}
     </update>
-    <update id="updateByPrimaryKey" parameterType="beans.Works">
+    <update id="updateByPrimaryKey" parameterType="com.website.pojo.Works">
     update works
     set student_id = #{studentId,jdbcType=BIGINT},
       works_name = #{worksName,jdbcType=VARCHAR},

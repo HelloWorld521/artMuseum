@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="dao.WorksComplaintMapper">
-    <resultMap id="BaseResultMap" type="beans.WorksComplaint">
+<mapper namespace="com.website.dao.WorksComplaintMapper">
+    <resultMap id="BaseResultMap" type="com.website.pojo.WorksComplaint">
         <id column="id" jdbcType="BIGINT" property="id"/>
         <result column="works_id" jdbcType="BIGINT" property="worksId"/>
         <result column="complaint_description" jdbcType="VARCHAR" property="complaintDescription"/>
@@ -71,7 +71,7 @@
     <sql id="Base_Column_List">
     id, works_id, complaint_description, gmt_create, gmt_modified
   </sql>
-    <select id="selectByExample" parameterType="beans.WorksComplaintExample" resultMap="BaseResultMap">
+    <select id="selectByExample" parameterType="com.website.pojo.WorksComplaintExample" resultMap="BaseResultMap">
         select
         <if test="distinct">
             distinct
@@ -95,19 +95,19 @@
     delete from works_complaint
     where id = #{id,jdbcType=BIGINT}
   </delete>
-    <delete id="deleteByExample" parameterType="beans.WorksComplaintExample">
+    <delete id="deleteByExample" parameterType="com.website.pojo.WorksComplaintExample">
         delete from works_complaint
         <if test="_parameter != null">
             <include refid="Example_Where_Clause"/>
         </if>
     </delete>
-    <insert id="insert" parameterType="beans.WorksComplaint">
+    <insert id="insert" parameterType="com.website.pojo.WorksComplaint">
     insert into works_complaint (id, works_id, complaint_description, 
       gmt_create, gmt_modified)
     values (#{id,jdbcType=BIGINT}, #{worksId,jdbcType=BIGINT}, #{complaintDescription,jdbcType=VARCHAR}, 
       #{gmtCreate,jdbcType=TIMESTAMP}, #{gmtModified,jdbcType=TIMESTAMP})
   </insert>
-    <insert id="insertSelective" parameterType="beans.WorksComplaint">
+    <insert id="insertSelective" parameterType="com.website.pojo.WorksComplaint">
         insert into works_complaint
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="id != null">
@@ -144,7 +144,7 @@
             </if>
         </trim>
     </insert>
-    <select id="countByExample" parameterType="beans.WorksComplaintExample" resultType="java.lang.Long">
+    <select id="countByExample" parameterType="com.website.pojo.WorksComplaintExample" resultType="java.lang.Long">
         select count(*) from works_complaint
         <if test="_parameter != null">
             <include refid="Example_Where_Clause"/>
@@ -184,7 +184,7 @@
             <include refid="Update_By_Example_Where_Clause"/>
         </if>
     </update>
-    <update id="updateByPrimaryKeySelective" parameterType="beans.WorksComplaint">
+    <update id="updateByPrimaryKeySelective" parameterType="com.website.pojo.WorksComplaint">
         update works_complaint
         <set>
             <if test="worksId != null">
@@ -202,7 +202,7 @@
         </set>
         where id = #{id,jdbcType=BIGINT}
     </update>
-    <update id="updateByPrimaryKey" parameterType="beans.WorksComplaint">
+    <update id="updateByPrimaryKey" parameterType="com.website.pojo.WorksComplaint">
     update works_complaint
     set works_id = #{worksId,jdbcType=BIGINT},
       complaint_description = #{complaintDescription,jdbcType=VARCHAR},

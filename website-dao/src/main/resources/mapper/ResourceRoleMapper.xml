@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="dao.ResourceRoleMapper">
-    <resultMap id="BaseResultMap" type="beans.ResourceRole">
+<mapper namespace="com.website.dao.ResourceRoleMapper">
+    <resultMap id="BaseResultMap" type="com.website.pojo.ResourceRole">
         <id column="id" jdbcType="BIGINT" property="id"/>
         <result column="resource_id" jdbcType="BIGINT" property="resourceId"/>
         <result column="role_id" jdbcType="BIGINT" property="roleId"/>
@@ -71,7 +71,7 @@
     <sql id="Base_Column_List">
     id, resource_id, role_id, gmt_create, gmt_modified
   </sql>
-    <select id="selectByExample" parameterType="beans.ResourceRoleExample" resultMap="BaseResultMap">
+    <select id="selectByExample" parameterType="com.website.pojo.ResourceRoleExample" resultMap="BaseResultMap">
         select
         <if test="distinct">
             distinct
@@ -95,19 +95,19 @@
     delete from resource_role
     where id = #{id,jdbcType=BIGINT}
   </delete>
-    <delete id="deleteByExample" parameterType="beans.ResourceRoleExample">
+    <delete id="deleteByExample" parameterType="com.website.pojo.ResourceRoleExample">
         delete from resource_role
         <if test="_parameter != null">
             <include refid="Example_Where_Clause"/>
         </if>
     </delete>
-    <insert id="insert" parameterType="beans.ResourceRole">
+    <insert id="insert" parameterType="com.website.pojo.ResourceRole">
     insert into resource_role (id, resource_id, role_id, 
       gmt_create, gmt_modified)
     values (#{id,jdbcType=BIGINT}, #{resourceId,jdbcType=BIGINT}, #{roleId,jdbcType=BIGINT}, 
       #{gmtCreate,jdbcType=TIMESTAMP}, #{gmtModified,jdbcType=TIMESTAMP})
   </insert>
-    <insert id="insertSelective" parameterType="beans.ResourceRole">
+    <insert id="insertSelective" parameterType="com.website.pojo.ResourceRole">
         insert into resource_role
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="id != null">
@@ -144,7 +144,7 @@
             </if>
         </trim>
     </insert>
-    <select id="countByExample" parameterType="beans.ResourceRoleExample" resultType="java.lang.Long">
+    <select id="countByExample" parameterType="com.website.pojo.ResourceRoleExample" resultType="java.lang.Long">
         select count(*) from resource_role
         <if test="_parameter != null">
             <include refid="Example_Where_Clause"/>
@@ -184,7 +184,7 @@
             <include refid="Update_By_Example_Where_Clause"/>
         </if>
     </update>
-    <update id="updateByPrimaryKeySelective" parameterType="beans.ResourceRole">
+    <update id="updateByPrimaryKeySelective" parameterType="com.website.pojo.ResourceRole">
         update resource_role
         <set>
             <if test="resourceId != null">
@@ -202,7 +202,7 @@
         </set>
         where id = #{id,jdbcType=BIGINT}
     </update>
-    <update id="updateByPrimaryKey" parameterType="beans.ResourceRole">
+    <update id="updateByPrimaryKey" parameterType="com.website.pojo.ResourceRole">
     update resource_role
     set resource_id = #{resourceId,jdbcType=BIGINT},
       role_id = #{roleId,jdbcType=BIGINT},

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="dao.OrderFormMapper">
-    <resultMap id="BaseResultMap" type="beans.OrderForm">
+<mapper namespace="com.website.dao.OrderFormMapper">
+    <resultMap id="BaseResultMap" type="com.website.pojo.OrderForm">
         <id column="id" jdbcType="BIGINT" property="id"/>
         <result column="status" jdbcType="TINYINT" property="status"/>
         <result column="project_id" jdbcType="BIGINT" property="projectId"/>
@@ -79,7 +79,7 @@
     id, status, project_id, seller_id, works_id, buyer_id, price, finish_time, gmt_create, 
     gmt_modified, comment, type
   </sql>
-    <select id="selectByExample" parameterType="beans.OrderFormExample" resultMap="BaseResultMap">
+    <select id="selectByExample" parameterType="com.website.pojo.OrderFormExample" resultMap="BaseResultMap">
         select
         <if test="distinct">
             distinct
@@ -103,13 +103,13 @@
     delete from order_form
     where id = #{id,jdbcType=BIGINT}
   </delete>
-    <delete id="deleteByExample" parameterType="beans.OrderFormExample">
+    <delete id="deleteByExample" parameterType="com.website.pojo.OrderFormExample">
         delete from order_form
         <if test="_parameter != null">
             <include refid="Example_Where_Clause"/>
         </if>
     </delete>
-    <insert id="insert" parameterType="beans.OrderForm">
+    <insert id="insert" parameterType="com.website.pojo.OrderForm">
     insert into order_form (id, status, project_id, 
       seller_id, works_id, buyer_id, 
       price, finish_time, gmt_create, 
@@ -121,7 +121,7 @@
       #{gmtModified,jdbcType=TIMESTAMP}, #{comment,jdbcType=VARCHAR}, #{type,jdbcType=TINYINT}
       )
   </insert>
-    <insert id="insertSelective" parameterType="beans.OrderForm">
+    <insert id="insertSelective" parameterType="com.website.pojo.OrderForm">
         insert into order_form
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="id != null">
@@ -200,7 +200,7 @@
             </if>
         </trim>
     </insert>
-    <select id="countByExample" parameterType="beans.OrderFormExample" resultType="java.lang.Long">
+    <select id="countByExample" parameterType="com.website.pojo.OrderFormExample" resultType="java.lang.Long">
         select count(*) from order_form
         <if test="_parameter != null">
             <include refid="Example_Where_Clause"/>
@@ -268,7 +268,7 @@
             <include refid="Update_By_Example_Where_Clause"/>
         </if>
     </update>
-    <update id="updateByPrimaryKeySelective" parameterType="beans.OrderForm">
+    <update id="updateByPrimaryKeySelective" parameterType="com.website.pojo.OrderForm">
         update order_form
         <set>
             <if test="status != null">
@@ -307,7 +307,7 @@
         </set>
         where id = #{id,jdbcType=BIGINT}
     </update>
-    <update id="updateByPrimaryKey" parameterType="beans.OrderForm">
+    <update id="updateByPrimaryKey" parameterType="com.website.pojo.OrderForm">
     update order_form
     set status = #{status,jdbcType=TINYINT},
       project_id = #{projectId,jdbcType=BIGINT},

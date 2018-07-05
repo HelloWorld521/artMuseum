@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="dao.UserRoleMapper">
-    <resultMap id="BaseResultMap" type="beans.UserRole">
+<mapper namespace="com.website.dao.UserRoleMapper">
+    <resultMap id="BaseResultMap" type="com.website.pojo.UserRole">
         <id column="user_id" jdbcType="BIGINT" property="userId"/>
         <result column="role_id" jdbcType="BIGINT" property="roleId"/>
         <result column="gmt_create" jdbcType="TIMESTAMP" property="gmtCreate"/>
@@ -70,7 +70,7 @@
     <sql id="Base_Column_List">
     user_id, role_id, gmt_create, gmt_modified
   </sql>
-    <select id="selectByExample" parameterType="beans.UserRoleExample" resultMap="BaseResultMap">
+    <select id="selectByExample" parameterType="com.website.pojo.UserRoleExample" resultMap="BaseResultMap">
         select
         <if test="distinct">
             distinct
@@ -94,19 +94,19 @@
     delete from user_role
     where user_id = #{userId,jdbcType=BIGINT}
   </delete>
-    <delete id="deleteByExample" parameterType="beans.UserRoleExample">
+    <delete id="deleteByExample" parameterType="com.website.pojo.UserRoleExample">
         delete from user_role
         <if test="_parameter != null">
             <include refid="Example_Where_Clause"/>
         </if>
     </delete>
-    <insert id="insert" parameterType="beans.UserRole">
+    <insert id="insert" parameterType="com.website.pojo.UserRole">
     insert into user_role (user_id, role_id, gmt_create, 
       gmt_modified)
     values (#{userId,jdbcType=BIGINT}, #{roleId,jdbcType=BIGINT}, #{gmtCreate,jdbcType=TIMESTAMP}, 
       #{gmtModified,jdbcType=TIMESTAMP})
   </insert>
-    <insert id="insertSelective" parameterType="beans.UserRole">
+    <insert id="insertSelective" parameterType="com.website.pojo.UserRole">
         insert into user_role
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="userId != null">
@@ -137,7 +137,7 @@
             </if>
         </trim>
     </insert>
-    <select id="countByExample" parameterType="beans.UserRoleExample" resultType="java.lang.Long">
+    <select id="countByExample" parameterType="com.website.pojo.UserRoleExample" resultType="java.lang.Long">
         select count(*) from user_role
         <if test="_parameter != null">
             <include refid="Example_Where_Clause"/>
@@ -173,7 +173,7 @@
             <include refid="Update_By_Example_Where_Clause"/>
         </if>
     </update>
-    <update id="updateByPrimaryKeySelective" parameterType="beans.UserRole">
+    <update id="updateByPrimaryKeySelective" parameterType="com.website.pojo.UserRole">
         update user_role
         <set>
             <if test="roleId != null">
@@ -188,7 +188,7 @@
         </set>
         where user_id = #{userId,jdbcType=BIGINT}
     </update>
-    <update id="updateByPrimaryKey" parameterType="beans.UserRole">
+    <update id="updateByPrimaryKey" parameterType="com.website.pojo.UserRole">
     update user_role
     set role_id = #{roleId,jdbcType=BIGINT},
       gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="dao.BidMapper">
-    <resultMap id="BaseResultMap" type="beans.Bid">
+<mapper namespace="com.website.dao.BidMapper">
+    <resultMap id="BaseResultMap" type="com.website.pojo.Bid">
         <id column="id" jdbcType="BIGINT" property="id"/>
         <result column="project_id" jdbcType="BIGINT" property="projectId"/>
         <result column="works_id" jdbcType="BIGINT" property="worksId"/>
@@ -71,7 +71,7 @@
     <sql id="Base_Column_List">
     id, project_id, works_id, gmt_create, gmt_modified
   </sql>
-    <select id="selectByExample" parameterType="beans.BidExample" resultMap="BaseResultMap">
+    <select id="selectByExample" parameterType="com.website.pojo.BidExample" resultMap="BaseResultMap">
         select
         <if test="distinct">
             distinct
@@ -95,19 +95,19 @@
     delete from bid
     where id = #{id,jdbcType=BIGINT}
   </delete>
-    <delete id="deleteByExample" parameterType="beans.BidExample">
+    <delete id="deleteByExample" parameterType="com.website.pojo.BidExample">
         delete from bid
         <if test="_parameter != null">
             <include refid="Example_Where_Clause"/>
         </if>
     </delete>
-    <insert id="insert" parameterType="beans.Bid">
+    <insert id="insert" parameterType="com.website.pojo.Bid">
     insert into bid (id, project_id, works_id, 
       gmt_create, gmt_modified)
     values (#{id,jdbcType=BIGINT}, #{projectId,jdbcType=BIGINT}, #{worksId,jdbcType=BIGINT}, 
       #{gmtCreate,jdbcType=TIMESTAMP}, #{gmtModified,jdbcType=TIMESTAMP})
   </insert>
-    <insert id="insertSelective" parameterType="beans.Bid">
+    <insert id="insertSelective" parameterType="com.website.pojo.Bid">
         insert into bid
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="id != null">
@@ -144,7 +144,7 @@
             </if>
         </trim>
     </insert>
-    <select id="countByExample" parameterType="beans.BidExample" resultType="java.lang.Long">
+    <select id="countByExample" parameterType="com.website.pojo.BidExample" resultType="java.lang.Long">
         select count(*) from bid
         <if test="_parameter != null">
             <include refid="Example_Where_Clause"/>
@@ -184,7 +184,7 @@
             <include refid="Update_By_Example_Where_Clause"/>
         </if>
     </update>
-    <update id="updateByPrimaryKeySelective" parameterType="beans.Bid">
+    <update id="updateByPrimaryKeySelective" parameterType="com.website.pojo.Bid">
         update bid
         <set>
             <if test="projectId != null">
@@ -202,7 +202,7 @@
         </set>
         where id = #{id,jdbcType=BIGINT}
     </update>
-    <update id="updateByPrimaryKey" parameterType="beans.Bid">
+    <update id="updateByPrimaryKey" parameterType="com.website.pojo.Bid">
     update bid
     set project_id = #{projectId,jdbcType=BIGINT},
       works_id = #{worksId,jdbcType=BIGINT},

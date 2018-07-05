@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="dao.ProjectAttachmentMapper">
-    <resultMap id="BaseResultMap" type="beans.ProjectAttachment">
+<mapper namespace="com.website.dao.ProjectAttachmentMapper">
+    <resultMap id="BaseResultMap" type="com.website.pojo.ProjectAttachment">
         <id column="id" jdbcType="BIGINT" property="id"/>
         <result column="attachment_name" jdbcType="VARCHAR" property="attachmentName"/>
         <result column="attachment_path" jdbcType="VARCHAR" property="attachmentPath"/>
@@ -73,7 +73,7 @@
     <sql id="Base_Column_List">
     id, attachment_name, attachment_path, attachment_size, project_id, gmt_create, gmt_modified
   </sql>
-    <select id="selectByExample" parameterType="beans.ProjectAttachmentExample" resultMap="BaseResultMap">
+    <select id="selectByExample" parameterType="com.website.pojo.ProjectAttachmentExample" resultMap="BaseResultMap">
         select
         <if test="distinct">
             distinct
@@ -97,13 +97,13 @@
     delete from project_attachment
     where id = #{id,jdbcType=BIGINT}
   </delete>
-    <delete id="deleteByExample" parameterType="beans.ProjectAttachmentExample">
+    <delete id="deleteByExample" parameterType="com.website.pojo.ProjectAttachmentExample">
         delete from project_attachment
         <if test="_parameter != null">
             <include refid="Example_Where_Clause"/>
         </if>
     </delete>
-    <insert id="insert" parameterType="beans.ProjectAttachment">
+    <insert id="insert" parameterType="com.website.pojo.ProjectAttachment">
     insert into project_attachment (id, attachment_name, attachment_path, 
       attachment_size, project_id, gmt_create, 
       gmt_modified)
@@ -111,7 +111,7 @@
       #{attachmentSize,jdbcType=DECIMAL}, #{projectId,jdbcType=BIGINT}, #{gmtCreate,jdbcType=TIMESTAMP}, 
       #{gmtModified,jdbcType=TIMESTAMP})
   </insert>
-    <insert id="insertSelective" parameterType="beans.ProjectAttachment">
+    <insert id="insertSelective" parameterType="com.website.pojo.ProjectAttachment">
         insert into project_attachment
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="id != null">
@@ -160,7 +160,7 @@
             </if>
         </trim>
     </insert>
-    <select id="countByExample" parameterType="beans.ProjectAttachmentExample" resultType="java.lang.Long">
+    <select id="countByExample" parameterType="com.website.pojo.ProjectAttachmentExample" resultType="java.lang.Long">
         select count(*) from project_attachment
         <if test="_parameter != null">
             <include refid="Example_Where_Clause"/>
@@ -208,7 +208,7 @@
             <include refid="Update_By_Example_Where_Clause"/>
         </if>
     </update>
-    <update id="updateByPrimaryKeySelective" parameterType="beans.ProjectAttachment">
+    <update id="updateByPrimaryKeySelective" parameterType="com.website.pojo.ProjectAttachment">
         update project_attachment
         <set>
             <if test="attachmentName != null">
@@ -232,7 +232,7 @@
         </set>
         where id = #{id,jdbcType=BIGINT}
     </update>
-    <update id="updateByPrimaryKey" parameterType="beans.ProjectAttachment">
+    <update id="updateByPrimaryKey" parameterType="com.website.pojo.ProjectAttachment">
     update project_attachment
     set attachment_name = #{attachmentName,jdbcType=VARCHAR},
       attachment_path = #{attachmentPath,jdbcType=VARCHAR},

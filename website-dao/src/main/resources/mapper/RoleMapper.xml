@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="dao.RoleMapper">
-    <resultMap id="BaseResultMap" type="beans.Role">
+<mapper namespace="com.website.dao.RoleMapper">
+    <resultMap id="BaseResultMap" type="com.website.pojo.Role">
         <id column="id" jdbcType="BIGINT" property="id"/>
         <result column="role_name" jdbcType="VARCHAR" property="roleName"/>
         <result column="gmt_create" jdbcType="TIMESTAMP" property="gmtCreate"/>
@@ -70,7 +70,7 @@
     <sql id="Base_Column_List">
     id, role_name, gmt_create, gmt_modified
   </sql>
-    <select id="selectByExample" parameterType="beans.RoleExample" resultMap="BaseResultMap">
+    <select id="selectByExample" parameterType="com.website.pojo.RoleExample" resultMap="BaseResultMap">
         select
         <if test="distinct">
             distinct
@@ -94,19 +94,19 @@
     delete from role
     where id = #{id,jdbcType=BIGINT}
   </delete>
-    <delete id="deleteByExample" parameterType="beans.RoleExample">
+    <delete id="deleteByExample" parameterType="com.website.pojo.RoleExample">
         delete from role
         <if test="_parameter != null">
             <include refid="Example_Where_Clause"/>
         </if>
     </delete>
-    <insert id="insert" parameterType="beans.Role">
+    <insert id="insert" parameterType="com.website.pojo.Role">
     insert into role (id, role_name, gmt_create, 
       gmt_modified)
     values (#{id,jdbcType=BIGINT}, #{roleName,jdbcType=VARCHAR}, #{gmtCreate,jdbcType=TIMESTAMP}, 
       #{gmtModified,jdbcType=TIMESTAMP})
   </insert>
-    <insert id="insertSelective" parameterType="beans.Role">
+    <insert id="insertSelective" parameterType="com.website.pojo.Role">
         insert into role
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="id != null">
@@ -137,7 +137,7 @@
             </if>
         </trim>
     </insert>
-    <select id="countByExample" parameterType="beans.RoleExample" resultType="java.lang.Long">
+    <select id="countByExample" parameterType="com.website.pojo.RoleExample" resultType="java.lang.Long">
         select count(*) from role
         <if test="_parameter != null">
             <include refid="Example_Where_Clause"/>
@@ -173,7 +173,7 @@
             <include refid="Update_By_Example_Where_Clause"/>
         </if>
     </update>
-    <update id="updateByPrimaryKeySelective" parameterType="beans.Role">
+    <update id="updateByPrimaryKeySelective" parameterType="com.website.pojo.Role">
         update role
         <set>
             <if test="roleName != null">
@@ -188,7 +188,7 @@
         </set>
         where id = #{id,jdbcType=BIGINT}
     </update>
-    <update id="updateByPrimaryKey" parameterType="beans.Role">
+    <update id="updateByPrimaryKey" parameterType="com.website.pojo.Role">
     update role
     set role_name = #{roleName,jdbcType=VARCHAR},
       gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},

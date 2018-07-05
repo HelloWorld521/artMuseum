@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="dao.ComplaintAttachmentMapper">
-    <resultMap id="BaseResultMap" type="beans.ComplaintAttachment">
+<mapper namespace="com.website.dao.ComplaintAttachmentMapper">
+    <resultMap id="BaseResultMap" type="com.website.pojo.ComplaintAttachment">
         <id column="id" jdbcType="BIGINT" property="id"/>
         <result column="attachment_name" jdbcType="VARCHAR" property="attachmentName"/>
         <result column="attachment_path" jdbcType="VARCHAR" property="attachmentPath"/>
@@ -75,7 +75,7 @@
     id, attachment_name, attachment_path, attachment_size, complaint_id, complaint_type, 
     gmt_create, gmt_modified
   </sql>
-    <select id="selectByExample" parameterType="beans.ComplaintAttachmentExample" resultMap="BaseResultMap">
+    <select id="selectByExample" parameterType="com.website.pojo.ComplaintAttachmentExample" resultMap="BaseResultMap">
         select
         <if test="distinct">
             distinct
@@ -99,13 +99,13 @@
     delete from complaint_attachment
     where id = #{id,jdbcType=BIGINT}
   </delete>
-    <delete id="deleteByExample" parameterType="beans.ComplaintAttachmentExample">
+    <delete id="deleteByExample" parameterType="com.website.pojo.ComplaintAttachmentExample">
         delete from complaint_attachment
         <if test="_parameter != null">
             <include refid="Example_Where_Clause"/>
         </if>
     </delete>
-    <insert id="insert" parameterType="beans.ComplaintAttachment">
+    <insert id="insert" parameterType="com.website.pojo.ComplaintAttachment">
     insert into complaint_attachment (id, attachment_name, attachment_path, 
       attachment_size, complaint_id, complaint_type, 
       gmt_create, gmt_modified)
@@ -113,7 +113,7 @@
       #{attachmentSize,jdbcType=DECIMAL}, #{complaintId,jdbcType=BIGINT}, #{complaintType,jdbcType=TINYINT}, 
       #{gmtCreate,jdbcType=TIMESTAMP}, #{gmtModified,jdbcType=TIMESTAMP})
   </insert>
-    <insert id="insertSelective" parameterType="beans.ComplaintAttachment">
+    <insert id="insertSelective" parameterType="com.website.pojo.ComplaintAttachment">
         insert into complaint_attachment
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="id != null">
@@ -168,7 +168,7 @@
             </if>
         </trim>
     </insert>
-    <select id="countByExample" parameterType="beans.ComplaintAttachmentExample" resultType="java.lang.Long">
+    <select id="countByExample" parameterType="com.website.pojo.ComplaintAttachmentExample" resultType="java.lang.Long">
         select count(*) from complaint_attachment
         <if test="_parameter != null">
             <include refid="Example_Where_Clause"/>
@@ -220,7 +220,7 @@
             <include refid="Update_By_Example_Where_Clause"/>
         </if>
     </update>
-    <update id="updateByPrimaryKeySelective" parameterType="beans.ComplaintAttachment">
+    <update id="updateByPrimaryKeySelective" parameterType="com.website.pojo.ComplaintAttachment">
         update complaint_attachment
         <set>
             <if test="attachmentName != null">
@@ -247,7 +247,7 @@
         </set>
         where id = #{id,jdbcType=BIGINT}
     </update>
-    <update id="updateByPrimaryKey" parameterType="beans.ComplaintAttachment">
+    <update id="updateByPrimaryKey" parameterType="com.website.pojo.ComplaintAttachment">
     update complaint_attachment
     set attachment_name = #{attachmentName,jdbcType=VARCHAR},
       attachment_path = #{attachmentPath,jdbcType=VARCHAR},

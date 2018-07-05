@@ -15,4 +15,16 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
+
+    <!-- 添加依赖 -->
+    <dependencies>
+        <!-- 时间操作组件
+            参考https://www.jianshu.com/p/efdeda608780
+        -->
+        <dependency>
+            <groupId>joda-time</groupId>
+            <artifactId>joda-time</artifactId>
+        </dependency>
+
+    </dependencies>
 </project>
